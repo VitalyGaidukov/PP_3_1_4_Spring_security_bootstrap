@@ -26,9 +26,4 @@ public class UserController {
         return "user_page";
     }
 
-//    @GetMapping("/user/{id}")
-//    public String userPage(@PathVariable("id") int id, Model model){
-//        model.addAttribute("userInfo", userService.getUser(id));
-//        return "user_page";
-//    }
 }

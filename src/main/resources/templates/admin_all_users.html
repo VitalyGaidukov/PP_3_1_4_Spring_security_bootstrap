@@ -144,7 +144,7 @@
                                                         <div2 class="d-flex justify-content-center align-items-center container">
                                                             <div3 class="row">
                                                                 <form th:method="DELETE"
-                                                                      th:action="@{/{id}(id=${user.id})}"
+                                                                      th:action="@{/{id}(id=${user.getId()})}"
                                                                       th:object="${user}">
 
                                                                     <div class="mb-3">
@@ -253,10 +253,11 @@
 
                                                                     <div class="mb-3">
                                                                         <label for="edit-id"><b>ID</b></label>
-                                                                        <input class="form-control" readonly type="text"
+                                                                        <input class="form-control" type="text"
                                                                                id="edit-id"
                                                                                th:value="*{id}"
-                                                                               name="id" disabled>
+                                                                               th:name="id" disabled>
+
                                                                     </div>
 
                                                                     <div class="mb-3">
@@ -264,8 +265,9 @@
                                                                             Name</b></label>
                                                                         <input class="form-control" type="text"
                                                                                id="edit-firstname"
-                                                                               th:value="*{username}"
-                                                                               name="firstname" >
+                                                                               th:value="*{name}"
+                                                                               th:name="name" required>
+
                                                                     </div>
 
                                                                     <div class="mb-3">
@@ -274,16 +276,15 @@
                                                                         <input class="form-control" type="text"
                                                                                id="edit-lastname"
                                                                                th:value="*{surname}"
-                                                                               name="lastname" >
+                                                                               th:name="surname">
                                                                     </div>
 
                                                                     <div class="mb-3">
                                                                         <label for="edit-age"><b>Age</b></label>
-                                                                        <input class="form-control"
-                                                                               type="number"
+                                                                        <input class="form-control" type="number"
                                                                                id="edit-age"
                                                                                th:value="*{age}"
-                                                                               name="age" >
+                                                                               th:name="age">
                                                                     </div>
 
                                                                     <div class="mb-3">
@@ -291,7 +292,7 @@
                                                                         <input class="form-control" type="text"
                                                                                id="edit-email"
                                                                                th:value="*{email}"
-                                                                               name="email" >
+                                                                               th:name="email">
                                                                     </div>
 
                                                                     <div class="mb-3">
@@ -299,7 +300,7 @@
                                                                         <input class="form-control" type="text"
                                                                                id="edit-password"
                                                                                th:value="*{password}"
-                                                                               name="password" >
+                                                                               th:name="password">
                                                                     </div>
 
                                                                     <div class="mb-3">
@@ -318,7 +319,7 @@
                                                                             </option>
                                                                         </select>
                                                                     </div>
-                                                                    <!-- Подтверждающие/отменяющие кнопки перед обновлением юзера -->
+
                                                                     <div class="modal-footer text-end">
                                                                         <button type="button" class="btn btn-secondary"
                                                                                 data-bs-dismiss="modal">Close

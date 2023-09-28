@@ -10,5 +10,4 @@ public interface RoleService {
 
     Role getById(int id);
 
-//    Set<Role> setRolesByIds(String rolesId);
 }

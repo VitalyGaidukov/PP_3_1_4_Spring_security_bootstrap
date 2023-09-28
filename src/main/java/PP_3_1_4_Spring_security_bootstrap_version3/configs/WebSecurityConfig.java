@@ -1,7 +1,7 @@
 package PP_3_1_4_Spring_security_bootstrap_version3.configs;
 
 
-import PP_3_1_4_Spring_security_bootstrap_version3.details.UserServiceDetails;
+import PP_3_1_4_Spring_security_bootstrap_version3.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,9 +18,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
 
-    private final UserServiceDetails userServiceDetails;
+    private final UserService userServiceDetails;
 
-    public WebSecurityConfig(SuccessUserHandler successUserHandler, PasswordEncoder passwordEncoder, UserServiceDetails userServiceDetails) {
+    public WebSecurityConfig(SuccessUserHandler successUserHandler, PasswordEncoder passwordEncoder, UserService userServiceDetails) {
         this.successUserHandler = successUserHandler;
         this.passwordEncoder = passwordEncoder;
         this.userServiceDetails = userServiceDetails;
@@ -45,27 +45,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/homePage")
                 .permitAll();
     }
-
-
-    // аутентификация inMemory
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService() {
-//        UserDetails admin =
-//                User.withDefaultPasswordEncoder()
-//                        .username("admin")
-//                        .password("admin")
-//                        .roles("ADMIN")
-//                        .build();
-//        UserDetails user =
-//                User.withDefaultPasswordEncoder()
-//                        .username("user")
-//                        .password("user")
-//                        .roles("USER")
-//                        .build();
-//
-//        return new InMemoryUserDetailsManager(user, admin);
-//    }
 
     //возвращает юзера в SecurityContext
     @Bean

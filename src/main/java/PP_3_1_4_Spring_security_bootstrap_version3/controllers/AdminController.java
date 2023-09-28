@@ -36,39 +36,22 @@ public class AdminController {
         return "admin_all_users";
     }
 
-//    @GetMapping("/saveUser")
-//    public String addNewUser(Model model){
-//        User user = new User();
-//        model.addAttribute("user", user);
-//        model.addAttribute("AllRolesBD", roleService.listRoles());
-//        return "admin_all_users";
-//    }
-//
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("newUser") User user){
         userService.saveUser(user);
         return "redirect:/admin";
     }
-//
+
     @DeleteMapping("/{id}")
     public String deleteUser (@PathVariable("id") int id){
         userService.deleteUser(id);
         return "redirect:/admin";
     }
-//
-//    @GetMapping("/{id}")
-//    public String getUser(Model model, @PathVariable("id") int id){
-//        model.addAttribute("user", userService.getUser(id));
-//        model.addAttribute("AllRolesBD", roleService.listRoles());
-//        return "redirect:/admin";
-//    }
-//
+
     @PatchMapping("/{id}")
     public String updateUser (@ModelAttribute("user") User user) {
         userService.updateUser(user);
         return "redirect:/admin";
     }
-
-
 
 }
