@@ -49,8 +49,15 @@ public class AdminController {
     }
 
     @PatchMapping("/{id}")
-    public String updateUser (@ModelAttribute("user") User user) {
-        userService.updateUser(user);
+    public String updateUser (@ModelAttribute("user") User user, @PathVariable("id") int id) {
+
+        userService.updateUser(user, id);//передаю id и user-а в метод для обновления и проверки пароля
+        return "redirect:/admin";
+    }
+    @GetMapping("/{id}")
+    public String getUser(Model model, @PathVariable("id") int id){
+        model.addAttribute("userGet", userService.getUser(id));
+        model.addAttribute("roleList", roleService.listRoles());
         return "redirect:/admin";
     }
 

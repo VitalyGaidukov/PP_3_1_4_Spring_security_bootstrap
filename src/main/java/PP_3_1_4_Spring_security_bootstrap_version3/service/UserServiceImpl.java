@@ -44,8 +44,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<User> getUser(int id) {
-        return userRepository.findById(id);
+    public User getUser(int id) {
+        return userRepository.findById(id).get();
     }
 
     @Override
@@ -54,10 +54,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(User user) {
-        String password = passwordEncoder.encode(user.getPassword());
-        user.setPassword(password);
-        userRepository.saveAndFlush(user);
+    public void updateUser(User user, int id){
+
+        User userDB = userRepository.findById(id).get(); //Находу юзера в БД, кого хочу редактировать, до отправки на обновление в БД
+
+        if (userDB.getPassword().equals(user.getPassword())) {//если пароль старый его не нужно перезаписывать просто обновляем юзера
+            userRepository.saveAndFlush(user);
+        } else {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));//если пароль новый его нужно перезаписать
+            userRepository.saveAndFlush(user);
+        }
     }
 
     @Override

@@ -12,11 +12,12 @@ public interface UserService extends UserDetailsService {
 
     void saveUser(User user);
 
-    Optional<User> getUser(int id);
+    User getUser(int id);
 
     void deleteUser(int id);
 
-    void updateUser (User user);
+    public void updateUser(User user, int id);
+
     User findByUsername(String username);
 
     boolean isUniqueUsername(String username);

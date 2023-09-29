@@ -10,4 +10,6 @@ public interface RoleService {
 
     Role getById(int id);
 
+    void save(Role role);
+
 }
