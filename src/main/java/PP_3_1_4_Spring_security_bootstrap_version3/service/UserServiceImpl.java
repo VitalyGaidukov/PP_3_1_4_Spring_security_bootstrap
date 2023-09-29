@@ -72,10 +72,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username);
     }
 
-    @Override
-    public boolean isUniqueUsername(String username) {
-        return findByUsername(username) != null;
-    }
 
     //задача UserDetailsService предоставить из БД юзера по имени
     @Override
